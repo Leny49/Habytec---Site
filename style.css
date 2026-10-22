@@ -112,16 +112,18 @@ h2 span{color:var(--cyan)}
 .card .num{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#159ce9,#51e1c1);color:#03111b;font-weight:900;font-size:17px;box-shadow:0 10px 30px #159ce955}
 .card h3{margin:22px 0 8px;font-size:20px;letter-spacing:-.01em}
 .card p{margin:0;color:var(--muted)}
-.choice{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
-.choice div{display:flex;gap:16px;align-items:flex-start;padding:22px 24px;border:1px solid var(--line);border-radius:20px;background:#0a1a28}
-.choice div.connected{border-color:#58ceff55;background:linear-gradient(135deg,#0f2d42,#0a1a28)}
-.choice svg{flex:none;width:34px;height:34px}
-.choice b{display:block;font-size:17px}
-.choice small{color:var(--muted);font-size:14.5px}
-.pro{display:flex;align-items:center;gap:18px;margin-top:20px;padding:20px 24px;border:1px solid #ffb54755;border-radius:20px;background:linear-gradient(135deg,#2a1f0e,#0a1a28)}
-.pro svg{flex:none;width:34px;height:34px}
-.pro p{margin:0;color:#e9dcc6}
-.pro b{color:#ffd58a}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px}
+.opt{display:grid;grid-template-columns:170px 1fr;align-items:center;gap:22px;padding:22px 26px 22px 18px;border:1px solid var(--line);border-radius:24px;background:#0a1a28}
+.opt.connected{border-color:#58ceff55;background:linear-gradient(135deg,#0f2d42,#0a1a28)}
+.opt-text{display:flex;gap:14px;align-items:flex-start}
+.opt-text>svg{display:none}
+.opt b{display:block;font-size:20px;letter-spacing:-.01em}
+.opt small{display:block;margin-top:4px;color:#bcd0dc;font-size:16px;line-height:1.55}
+.pro{display:grid;grid-template-columns:1fr 260px;align-items:center;gap:26px;margin-top:20px;padding:26px 30px;border:1px solid #ffb54755;border-radius:24px;background:linear-gradient(135deg,#2a1f0e,#0a1a28)}
+.pro-text{display:flex;gap:16px;align-items:flex-start}
+.pro-text>svg{flex:none;width:38px;height:38px}
+.pro p{margin:0;color:#ecdfc8;font-size:17px;line-height:1.6}
+.pro b{display:block;margin-bottom:4px;color:#ffd58a;font-size:20px}
 
 /* Lancement */
 .launch{padding:40px 0 110px}
@@ -223,8 +225,8 @@ h1 .l2{animation:unveil 1.1s .45s cubic-bezier(.2,.8,.2,1) both,shine 7s 1.6s li
 .steps-line path{fill:none;stroke:#58ceff;stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px #58ceff);transition:stroke-dashoffset 1.6s .6s cubic-bezier(.6,.1,.2,1)}
 .steps-line.on path{stroke-dashoffset:0}
 /* Connectée / classique et électriciens : légère lueur au survol */
-.choice div,.pro{transition:transform .3s,border-color .3s,box-shadow .3s}
-.choice div:hover{transform:translateY(-4px);border-color:#58ceff66;box-shadow:0 18px 40px #0007}
+.opt,.pro{transition:transform .3s,border-color .3s,box-shadow .3s}
+.opt:hover{transform:translateY(-4px);border-color:#58ceff66;box-shadow:0 18px 40px #0007}
 .pro:hover{transform:translateY(-4px);box-shadow:0 18px 40px #ffb54722}
 /* Bloc lancement : halo qui respire, boutons aux couleurs des réseaux */
 .launch-card:before{content:"";position:absolute;left:50%;top:-40%;width:620px;height:620px;margin-left:-310px;border-radius:50%;background:radial-gradient(circle,#13a3e430,transparent 65%);animation:breathe 6s ease-in-out infinite;pointer-events:none}
@@ -233,6 +235,92 @@ h1 .l2{animation:unveil 1.1s .45s cubic-bezier(.2,.8,.2,1) both,shine 7s 1.6s li
 .social[href*="instagram"]:hover{border-color:#e1306c;box-shadow:0 12px 34px #e1306c4d;background:linear-gradient(135deg,#3b1530,#0d2131)}
 .social[href*="facebook"]:hover{border-color:#1877f2;box-shadow:0 12px 34px #1877f24d;background:linear-gradient(135deg,#102a52,#0d2131)}
 .social[href*="tiktok"]:hover{border-color:#25f4ee;box-shadow:-4px 12px 30px #25f4ee40,4px 12px 30px #fe2c5540;background:linear-gradient(135deg,#0f2c33,#2a1220)}
+
+/* ---------- Le concept : étapes illustrées, plus lisibles ---------- */
+#concept .intro{font-size:18px;color:#a9c1cd}
+.step{padding:0}
+.ill-wrap{position:relative;height:184px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 50% 115%,#13a3e440,transparent 62%),#0b1d2b;overflow:hidden}
+.ill-wrap:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#58ceff0c 1px,transparent 1px),linear-gradient(90deg,#58ceff0c 1px,transparent 1px);background-size:22px 22px}
+.ill{position:absolute;inset:12px 14px 14px;width:calc(100% - 28px);height:calc(100% - 26px)}
+.step-body{position:relative;padding:0 26px 28px}
+.step .num{margin-top:-24px;border:4px solid #0e2232}
+.step h3{margin:16px 0 8px;font-size:21px}
+.step p{color:#bcd0dc;font-size:16px;line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chips span{padding:4px 11px;border:1px solid #58ceff40;border-radius:999px;background:#58ceff12;color:#9fdcff;font-size:12.5px;font-weight:700}
+/* Étape 1 : plan, les repères tombent dans les pièces */
+.plan rect{fill:#0e2738;stroke:#58ceff66;stroke-width:1.4}
+.room-name text{fill:#5f7a8a;font:700 8px var(--font);letter-spacing:.12em}
+.pin{opacity:0;transform:translateY(-26px)}
+.step.in .pin{animation:drop .7s calc(.5s + var(--i) * .22s) cubic-bezier(.3,1.5,.5,1) both}
+@keyframes drop{to{opacity:1;transform:none}}
+.pin path:first-child{filter:drop-shadow(0 4px 6px #0008)}
+/* Étape 2 : les postes s'assemblent, s'étiquettent, sont programmés */
+.tray{fill:#12293b;stroke:#2c4a60}
+.module{opacity:0;transform:translateY(-18px)}
+.step.in .module{animation:drop .6s calc(.4s + var(--i) * .2s) cubic-bezier(.3,1.4,.5,1) both}
+.module>rect{fill:#e9f4fa;filter:drop-shadow(0 6px 10px #0009)}
+.module>circle{fill:#c2d6e1;stroke:#8aa3b2}
+.tag{opacity:0;transform:translateY(8px)}
+.step.in .tag{animation:drop .5s calc(1.2s + var(--i) * .2s) ease-out both}
+.tag rect{fill:#ffb547}
+.tag text{fill:#3a2a10;font:800 8.5px var(--font);letter-spacing:.06em;text-anchor:middle}
+.signal{fill:none;stroke:#51e1c1;stroke-width:2.6;stroke-linecap:round;opacity:0}
+.signal circle{fill:#51e1c1;stroke:none}
+.step.in .signal{animation:blink 1.8s 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+.ok{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3)}
+.ok circle{fill:#51e1c1}.ok path{fill:none;stroke:#03111b;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.step.in .ok{animation:okpop .5s 1.9s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes okpop{to{opacity:1;transform:none}}
+/* Étape 3 : livré partout en France */
+.fr{fill:#0e2738;stroke:#58ceff;stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(0 0 6px #58ceff66)}
+.route{fill:none;stroke:#51e1c1;stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;opacity:.75}
+.step.in .route{animation:route 1.2s calc(.6s + var(--i) * .12s) ease-out both}
+@keyframes route{to{stroke-dashoffset:0}}
+.city{fill:#58ceff;opacity:0;transform-box:fill-box;transform-origin:center}
+.step.in .city{animation:okpop .4s calc(1.4s + var(--i) * .12s) both}
+.hub{fill:#51e1c1}
+.hub-ring{fill:none;stroke:#51e1c1;stroke-width:4;transform-box:fill-box;transform-origin:center;animation:hub 2.2s ease-out infinite}
+@keyframes hub{from{transform:scale(.6);opacity:1}to{transform:scale(1.8);opacity:0}}
+.parcel{fill:#ffb547;filter:drop-shadow(0 0 8px #ffb547)}
+/* Petit titre de la comparaison */
+.sub-h{margin:64px 0 0;font-size:clamp(24px,2.6vw,30px);letter-spacing:-.02em}
+/* Connectée : un téléphone qui pilote la maison */
+.opt-visual svg{width:100%;height:auto;max-height:170px}
+.phone{fill:#071521;stroke:#58ceff88;stroke-width:2}
+.notch,.home-btn{fill:#1e3a50}
+.row text{fill:#c8dbe5;font:700 9px var(--font)}
+.sw{fill:#2a3f4d;transition:fill .3s}
+.knob{fill:#fff;transition:transform .35s}
+.connected.in .row .sw{animation:swbg 6s calc(var(--i) * 1.2s) infinite}
+.connected.in .row .knob{animation:swknob 6s calc(var(--i) * 1.2s) infinite}
+@keyframes swbg{0%,8%{fill:#2a3f4d}14%,62%{fill:#51e1c1}68%,100%{fill:#2a3f4d}}
+@keyframes swknob{0%,8%{transform:none}14%,62%{transform:translateX(10px)}68%,100%{transform:none}}
+/* Classique : l'interrupteur allume l'ampoule */
+.plate{fill:#e9f4fa;filter:drop-shadow(0 6px 10px #0009)}
+.rocker{fill:#c8d6df;stroke:#9fb3c0;transform-box:fill-box;transform-origin:center}
+.cable{fill:none;stroke:#2c4a60;stroke-width:3;stroke-linecap:round}
+.glass{fill:#1e3a50;stroke:#8aa3b2;stroke-width:1.5}
+.base{fill:#8aa3b2}
+.glow-b{fill:#ffb547;opacity:0;filter:blur(6px)}
+.classic.in .rocker{animation:rock 4s 1s infinite}
+.classic.in .glass{animation:bulb 4s 1s infinite}
+.classic.in .glow-b{animation:bulbglow 4s 1s infinite}
+.classic.in .cable{animation:cable 4s 1s infinite}
+@keyframes rock{0%,20%{transform:none}26%,70%{transform:scaleY(-1)}76%,100%{transform:none}}
+@keyframes bulb{0%,24%{fill:#1e3a50}30%,72%{fill:#ffd58a}78%,100%{fill:#1e3a50}}
+@keyframes bulbglow{0%,24%{opacity:0}30%,72%{opacity:.55}78%,100%{opacity:0}}
+@keyframes cable{0%,22%{stroke:#2c4a60}28%,72%{stroke:#ffb547}78%,100%{stroke:#2c4a60}}
+/* Électriciens : des postes étiquetés, prêts pour le chantier */
+.pro-visual{width:100%;height:auto}
+.crate{opacity:0;transform:translateY(-14px)}
+.pro.in .crate{animation:drop .6s calc(.3s + var(--i) * .18s) cubic-bezier(.3,1.4,.5,1) both}
+.crate>rect{fill:#3a2a10;stroke:#ffb54799;stroke-width:1.5}
+.crate .tag{opacity:1;transform:none;animation:none}
+.crate .tag rect{fill:#ffb547}
+.tape{stroke:#ffb54766;stroke-width:6}
+.pro.in .tape{animation:fadeup .5s 1s both}
 
 /* ---------- Écrans plus petits ---------- */
 @media (max-width:980px){
@@ -258,7 +346,9 @@ h1 .l2{animation:unveil 1.1s .45s cubic-bezier(.2,.8,.2,1) both,shine 7s 1.6s li
   .hero{padding:44px 0 64px}
   .block{padding:70px 0}
   .choice{grid-template-columns:1fr}
-  .pro{flex-direction:column;align-items:flex-start}
+  .opt{grid-template-columns:110px 1fr;padding:18px 20px 18px 12px;gap:14px}
+  .pro-visual{max-width:300px}
+  .pro{grid-template-columns:1fr;padding:22px}
   .launch-card{padding:40px 22px;border-radius:24px}
   .spot span{font-size:11px}
   .foot nav{margin-left:0}
