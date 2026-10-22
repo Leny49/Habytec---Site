@@ -173,6 +173,67 @@ h2 span{color:var(--cyan)}
 .todo{padding:1px 8px;border-radius:6px;background:#ffb54726;color:#ffd58a;font-weight:700}
 .back{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-weight:700;text-decoration:none}
 
+/* ---------- Effets « waouh » (design seulement, le contenu ne change pas) ---------- */
+/* Barre de progression de lecture et halo qui suit la souris */
+.progress{position:fixed;left:0;top:0;z-index:40;width:100%;height:3px;background:linear-gradient(90deg,#1aabff,#51e1c1,#ffb547);transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 12px #58ceff}
+.cursor-glow{position:fixed;left:0;top:0;z-index:1;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,#58ceff16,transparent 62%);pointer-events:none;opacity:0;transition:opacity .4s;mix-blend-mode:screen}
+.cursor-glow.on{opacity:1}
+/* En-tête qui se resserre au défilement */
+.top{transition:background .3s,box-shadow .3s}
+.top.scrolled{background:#06111bf0;box-shadow:0 10px 30px #0008,0 1px 0 #58ceff22}
+/* Réseau lumineux animé derrière l'en-tête de page */
+.net{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:.9}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),#58ceff14,transparent 60%);pointer-events:none}
+/* Titre qui se dévoile ligne par ligne */
+h1 .l1{display:block;background:none;color:inherit;-webkit-background-clip:border-box;background-clip:border-box;animation:unveil 1s .15s cubic-bezier(.2,.8,.2,1) both}
+h1 .l2{animation:unveil 1.1s .45s cubic-bezier(.2,.8,.2,1) both,shine 7s 1.6s linear infinite}
+@keyframes unveil{from{clip-path:inset(0 100% 0 0);transform:translateY(18px);opacity:0}to{clip-path:inset(-20% -10% -25% -5%);transform:none;opacity:1}}
+.hero .eyebrow{animation:fadeup .7s both}
+.hero .lead{animation:fadeup .8s .7s both}
+.hero .actions{animation:fadeup .8s .85s both}
+.hero .trust{animation:fadeup .8s 1s both}
+/* Boutons : reflet qui passe */
+.btn{position:relative;overflow:hidden}
+.btn.primary:after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,#ffffff8c,transparent);transform:skewX(-20deg);animation:sweep 4.5s 2s ease-in-out infinite}
+@keyframes sweep{0%,60%{left:-60%}100%{left:130%}}
+/* Écran de la maison : flotte, bordure lumineuse qui tourne, reflet sur la vitre */
+.stage{animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.stage:after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,#58ceff 75%,#51e1c1 85%,transparent 95%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:turn 7s linear infinite;pointer-events:none}
+.stage:before{content:"";position:absolute;inset:0;z-index:3;border-radius:inherit;background:linear-gradient(115deg,transparent 42%,#ffffff12 50%,transparent 58%) no-repeat;background-size:250% 100%;animation:glass 6s 2.5s ease-in-out infinite;pointer-events:none}
+@keyframes glass{0%,55%{background-position:120% 0}100%{background-position:-120% 0}}
+/* La maison réagit à la zone affichée */
+.heat{opacity:0;transition:opacity .8s}
+.shutter{fill:#0b2232;stroke:#58ceff99;stroke-width:1.5;transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);transition:transform .9s cubic-bezier(.5,0,.2,1)}
+.stage[data-zone="0"] .win{animation:none;opacity:1;filter:drop-shadow(0 0 22px #ffb547)}
+.stage[data-zone="1"] .shutter{transform:scaleY(1)}
+.stage[data-zone="2"] .heat{opacity:1}
+.stage[data-zone="3"] .wire{stroke-width:5;filter:drop-shadow(0 0 14px #1aabff)}
+.stage[data-zone="3"] .node{filter:drop-shadow(0 0 16px #58ceff);fill:#58ceff}
+/* Cartes : inclinaison 3D, bordure dégradée au survol, numéros lumineux */
+.steps{position:relative}
+.card{transform-style:preserve-3d;will-change:transform}
+.card:after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(140deg,#58ceff,#51e1c100 45%,#ffb54700 70%,#51e1c1);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover:after{opacity:1}
+.card .num{position:relative;z-index:2}
+.card.in .num{animation:numglow 3s 1s ease-in-out infinite}
+@keyframes numglow{0%,100%{box-shadow:0 10px 30px #159ce955}50%{box-shadow:0 0 0 6px #58ceff1f,0 10px 40px #159ce9aa}}
+/* Circuit qui relie les 3 étapes */
+.steps-line{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;overflow:visible;pointer-events:none}
+.steps-line path{fill:none;stroke:#58ceff;stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px #58ceff);transition:stroke-dashoffset 1.6s .6s cubic-bezier(.6,.1,.2,1)}
+.steps-line.on path{stroke-dashoffset:0}
+/* Connectée / classique et électriciens : légère lueur au survol */
+.choice div,.pro{transition:transform .3s,border-color .3s,box-shadow .3s}
+.choice div:hover{transform:translateY(-4px);border-color:#58ceff66;box-shadow:0 18px 40px #0007}
+.pro:hover{transform:translateY(-4px);box-shadow:0 18px 40px #ffb54722}
+/* Bloc lancement : halo qui respire, boutons aux couleurs des réseaux */
+.launch-card:before{content:"";position:absolute;left:50%;top:-40%;width:620px;height:620px;margin-left:-310px;border-radius:50%;background:radial-gradient(circle,#13a3e430,transparent 65%);animation:breathe 6s ease-in-out infinite;pointer-events:none}
+@keyframes breathe{0%,100%{transform:scale(.9);opacity:.7}50%{transform:scale(1.1);opacity:1}}
+.launch-card>*{position:relative}
+.social[href*="instagram"]:hover{border-color:#e1306c;box-shadow:0 12px 34px #e1306c4d;background:linear-gradient(135deg,#3b1530,#0d2131)}
+.social[href*="facebook"]:hover{border-color:#1877f2;box-shadow:0 12px 34px #1877f24d;background:linear-gradient(135deg,#102a52,#0d2131)}
+.social[href*="tiktok"]:hover{border-color:#25f4ee;box-shadow:-4px 12px 30px #25f4ee40,4px 12px 30px #fe2c5540;background:linear-gradient(135deg,#0f2c33,#2a1220)}
+
 /* ---------- Écrans plus petits ---------- */
 @media (max-width:980px){
   /* Sur tablette et téléphone, la maison animée vient juste sous le titre */
@@ -184,6 +245,7 @@ h2 span{color:var(--cyan)}
   .lead{order:4}.actions{order:5}.trust{order:6}
   .steps{grid-template-columns:1fr}
   .nav{display:none}
+  .steps-line,.cursor-glow{display:none}
   .top .soon{margin-left:auto}
 }
 @media (max-width:640px){

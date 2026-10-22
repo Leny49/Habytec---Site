@@ -22,12 +22,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="apple-mobile-web-app-title" content="HABYTEC">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 <script>document.documentElement.classList.remove("no-js")</script>
-<script src="script.js" defer></script>
+<script src="script.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
 
 <header class="top">
   <div class="wrap">
@@ -49,10 +51,11 @@
     <div class="grid-lines" aria-hidden="true"></div>
     <div class="glow one" aria-hidden="true"></div>
     <div class="glow two" aria-hidden="true"></div>
+    <canvas class="net" aria-hidden="true"></canvas>
     <div class="wrap hero-grid">
       <div class="hero-copy reveal in">
         <span class="eyebrow"><i></i>HABYTEC · habitat intelligent</span>
-        <h1>Imaginez votre <span>maison autrement.</span></h1>
+        <h1><span class="l1">Imaginez votre</span> <span class="l2">maison autrement.</span></h1>
         <p class="lead">Un habitat intuitif, performant et évolutif, imaginé autour de vos usages. HABYTEC transforme vos idées et vos besoins en une installation claire et cohérente, prête à être posée par vous ou par votre électricien.</p>
         <div class="actions">
           <a class="btn primary" href="#lancement">Suivre le lancement <span aria-hidden="true">→</span></a>
@@ -77,8 +80,12 @@
             <path class="draw d2" pathLength="1" d="M92 132 V272 H308 V132"/>
             <path class="draw d3" pathLength="1" d="M180 272 V208 H220 V272"/>
             <path class="draw d3" pathLength="1" d="M30 272 H370"/>
+            <defs><radialGradient id="heatGrad"><stop offset="0" stop-color="#ff9a3c" stop-opacity=".55"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient></defs>
+            <circle class="heat" cx="200" cy="205" r="105" fill="url(#heatGrad)"/>
             <rect class="win" x="120" y="166" width="42" height="34" rx="3"/>
             <rect class="win w2" x="238" y="166" width="42" height="34" rx="3"/>
+            <rect class="shutter" x="118" y="164" width="46" height="38" rx="2"/>
+            <rect class="shutter" x="236" y="164" width="46" height="38" rx="2"/>
             <path class="draw d3" pathLength="1" d="M120 166 H162 V200 H120 Z M141 166 V200 M238 166 H280 V200 H238 Z M259 166 V200" style="stroke-width:2"/>
             <path id="wire1" class="wire" pathLength="1" d="M226 326 V300 L208 262 V244"/>
             <path id="wire2" class="wire" pathLength="1" d="M244 326 V292 L266 270 V252"/>
@@ -109,6 +116,7 @@
       <h2 class="reveal">La domotique, <span>sans la complexité.</span></h2>
       <p class="intro reveal">Pas besoin de connaître le matériel : vous dites ce que vous voulez, HABYTEC s’occupe du reste.</p>
       <div class="steps">
+        <svg class="steps-line" aria-hidden="true"><path pathLength="1"/></svg>
         <article class="card reveal"><span class="num">1</span><h3>Vous décrivez votre maison</h3><p>Sur le plan de votre maison, pièce par pièce, vous placez ce que vous voulez : prises, éclairages, volets, chauffage.</p></article>
         <article class="card reveal d1"><span class="num">2</span><h3>HABYTEC prépare tout</h3><p>Nous étudions votre projet, choisissons le bon matériel, puis pré-assemblons et étiquetons chaque poste. En connecté, tout est déjà programmé.</p></article>
         <article class="card reveal d2"><span class="num">3</span><h3>Vous recevez un kit prêt à poser</h3><p>Livré partout en France. Vous l’installez vous-même, ou avec votre électricien.</p></article>
